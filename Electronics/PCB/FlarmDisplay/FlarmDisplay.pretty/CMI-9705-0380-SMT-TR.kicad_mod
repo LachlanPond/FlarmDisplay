@@ -1,4 +1,4 @@
-(module CMI-9705-0380-SMT-TR (layer F.Cu) (tedit 628235BF)
+(module CMI-9705-0380-SMT-TR (layer F.Cu) (tedit 628651A5)
   (fp_text reference REF** (at 3.65 -5.9) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )
@@ -16,4 +16,9 @@
   (fp_line (start 4.7 -5) (end 1.4 -5) (layer F.SilkS) (width 0.12))
   (pad 1 smd rect (at -0.15 -5.35) (size 2.2 2) (layers F.Cu F.Paste F.Mask))
   (pad 2 smd rect (at -0.15 5.05) (size 2.2 2) (layers F.Cu F.Paste F.Mask))
+  (model /home/lachlan/Documents/Projects/FlarmDisplay/Electronics/PCB/3DModels/CUI_DEVICES_CMI-9705-0380-SMT-TR.step
+    (offset (xyz -0.1 0.1 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz -90 0 0))
+  )
 )

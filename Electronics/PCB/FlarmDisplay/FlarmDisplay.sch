@@ -30,7 +30,7 @@ U 1 1 6273F801
 P 1050 3700
 F 0 "J1" H 1107 4267 50  0000 C CNN
 F 1 "RJ12" H 1107 4176 50  0000 C CNN
-F 2 "Connector_RJ:RJ12_Amphenol_54601" V 1050 3725 50  0001 C CNN
+F 2 "FlarmDisplay:RJE231660413T" V 1050 3725 50  0001 C CNN
 F 3 "~" V 1050 3725 50  0001 C CNN
 	1    1050 3700
 	1    0    0    -1  
@@ -124,8 +124,6 @@ F 3 "~" H 850 1050 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	850  900  1300 900 
-Wire Wire Line
-	850  1200 1300 1200
 $Comp
 L Device:C C3
 U 1 1 62788D4A
@@ -183,17 +181,6 @@ Wire Wire Line
 Connection ~ 2200 1200
 Wire Wire Line
 	2200 1200 1750 1200
-$Comp
-L power:GND #PWR02
-U 1 1 6278A833
-P 850 1250
-F 0 "#PWR02" H 850 1000 50  0001 C CNN
-F 1 "GND" H 855 1077 50  0000 C CNN
-F 2 "" H 850 1250 50  0001 C CNN
-F 3 "" H 850 1250 50  0001 C CNN
-	1    850  1250
-	1    0    0    -1  
-$EndComp
 $Comp
 L power:+3.3V #PWR01
 U 1 1 6278AA0E
@@ -380,9 +367,6 @@ Wire Wire Line
 Wire Wire Line
 	850  2050 850  2000
 Connection ~ 850  2050
-Wire Wire Line
-	850  1250 850  1200
-Connection ~ 850  1200
 Wire Wire Line
 	850  900  850  850 
 Connection ~ 850  900 
@@ -1155,10 +1139,6 @@ F 3 "" H 10650 3800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	10650 3800 10650 3700
-Wire Wire Line
-	10650 3700 10750 3700
-Wire Wire Line
 	10650 3200 10650 3300
 Wire Wire Line
 	10650 3300 10750 3300
@@ -1173,9 +1153,6 @@ F 3 "~" H 10650 3500 50  0001 C CNN
 	1    10650 3500
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	10650 3650 10650 3700
-Connection ~ 10650 3700
 Wire Wire Line
 	10650 3350 10650 3300
 Connection ~ 10650 3300
@@ -1217,12 +1194,6 @@ Wire Wire Line
 	10250 1100 10250 2600
 Wire Wire Line
 	10250 2600 10750 2600
-Text GLabel 10650 2100 1    50   Input ~ 0
-ERR_READ
-Wire Wire Line
-	10750 2200 10650 2200
-Wire Wire Line
-	10650 2200 10650 2100
 Text GLabel 6150 2800 2    50   Output ~ 0
 TX
 Text GLabel 6150 2900 2    50   Input ~ 0
@@ -1478,7 +1449,7 @@ U 1 1 62B48A85
 P 1750 5550
 F 0 "U1" H 1855 5596 50  0000 L CNN
 F 1 "IPN80R3K3P7ATMA1" H 1855 5505 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-323_SC-70" H 1800 5950 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-223-3_TabPin2" H 1800 5950 50  0001 C CNN
 F 3 "" H 1800 5950 50  0001 C CNN
 	1    1750 5550
 	1    0    0    -1  
@@ -1638,5 +1609,40 @@ F 2 "LED_SMD:LED_0805_2012Metric" V 12200 2000 50  0001 C CNN
 F 3 "~" V 12200 2000 50  0001 C CNN
 	1    12200 2000
 	0    -1   -1   0   
+$EndComp
+NoConn ~ 4950 3000
+NoConn ~ 4950 3100
+NoConn ~ 4950 3200
+NoConn ~ 4950 3300
+NoConn ~ 4950 3400
+NoConn ~ 6150 3400
+NoConn ~ 6150 3100
+NoConn ~ 6150 3000
+NoConn ~ 6150 2700
+NoConn ~ 6150 2000
+NoConn ~ 6150 1900
+NoConn ~ 10750 2200
+Wire Wire Line
+	10650 3650 10650 3700
+Wire Wire Line
+	10750 3700 10650 3700
+Connection ~ 10650 3700
+Wire Wire Line
+	10650 3700 10650 3800
+Wire Wire Line
+	850  1250 850  1200
+Wire Wire Line
+	850  1200 1300 1200
+Connection ~ 850  1200
+$Comp
+L power:GND #PWR02
+U 1 1 62A053B7
+P 850 1250
+F 0 "#PWR02" H 850 1000 50  0001 C CNN
+F 1 "GND" H 855 1077 50  0000 C CNN
+F 2 "" H 850 1250 50  0001 C CNN
+F 3 "" H 850 1250 50  0001 C CNN
+	1    850  1250
+	1    0    0    -1  
 $EndComp
 $EndSCHEMATC
