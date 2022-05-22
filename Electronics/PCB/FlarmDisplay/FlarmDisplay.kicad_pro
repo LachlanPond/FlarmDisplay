@@ -383,8 +383,8 @@
       "idf": "",
       "netlist": "FlarmDisplay.net",
       "specctra_dsn": "",
-      "step": "",
-      "vrml": ""
+      "step": "FlarmDisplay.step",
+      "vrml": "FlarmDisplay.wrl"
     },
     "page_layout_descr_file": ""
   },
