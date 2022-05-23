@@ -18,9 +18,6 @@ from lib import *
 # PFLAU,<RX>,<TX>,<GPS>,<Power>,<AlarmLevel>,<RelativeBearing>,<AlarmType>,<RelativeVertical>,<RelativeDistance>[,<ID>]
 # msg = pynmea2.GGA('PF', 'LAU', ('1', '1', '2', '1', '1', '20', '2', '100', '999'))
 
-# RX needs a positive non-zero to activate (n gliders)
-# TX needs a 1 to activate
-# GPS needs a 1 or 2 to activate
 def orbit(alarm):
     for i in range(12):
         alarmType = '0' if (alarm == '0') else '2'
