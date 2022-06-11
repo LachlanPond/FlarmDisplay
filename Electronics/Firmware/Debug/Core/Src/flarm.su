@@ -1,0 +1,2 @@
+../Core/Src/flarm.c:10:6:serializeLEDRegister	16	static
+../Core/Src/flarm.c:46:6:clearLEDRegister	16	static
