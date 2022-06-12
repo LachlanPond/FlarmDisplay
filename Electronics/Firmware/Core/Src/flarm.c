@@ -6,6 +6,8 @@
  */
 
 #include "flarm.h"
+#include <string.h>
+#include <stdlib.h>
 
 void serializeLEDRegister(struct LEDRegister *reg) {
 	reg->Buffer = 0;
@@ -45,4 +47,27 @@ void serializeLEDRegister(struct LEDRegister *reg) {
 
 void clearLEDRegister(struct LEDRegister *reg) {
 	memset(reg, 0, sizeof(*reg));
+}
+
+void processPFLAU(char *msg, struct aircraftRegister *reg) {
+
+}
+
+// PFLAE Error message format:
+// PFLAE,<QueryType>,<Severity>,<ErrorCode>[,<Message>]
+void processPFLAE(char *packet, struct errorRegister *reg) {
+	uint8_t tokenCount = 0;
+	char *token = strtok(packet, ",");
+	while (1) {
+		switch (tokenCount) {
+			case 2:
+				reg->severity = (uint8_t)atoi(token);
+				break;
+			case 3:
+				reg->errorCode = (uint16_t)strtol(token, NULL, 16);
+				break;
+		}
+		token = strtok(packet, ",");
+		tokenCount++;
+	}
 }

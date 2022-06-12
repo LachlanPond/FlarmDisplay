@@ -44,6 +44,8 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 struct LEDRegister LEDreg;
+struct errorRegister errorReg;
+enum errors errors;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -55,6 +57,7 @@ static void MX_USART2_UART_Init(void);
 void displayLEDBuffer(struct LEDRegister *reg);
 void displayClockPulse();
 void displayLatch();
+void displayErrors();
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -101,166 +104,7 @@ int main(void) {
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
 	while (1) {
-		LEDreg.R01 = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.R02 = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.R03 = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.R04 = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.R05 = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.R06 = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.R07 = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.R08 = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.R09 = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.R10 = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.R11 = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.R12 = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.Y01 = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.Y02 = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.Y03 = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.Y04 = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.Y05 = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.Y06 = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.Y07 = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.Y08 = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.Y09 = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.Y10 = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.Y11 = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.Y12 = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.GPS = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.RX = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.TX = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.LL = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.L = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.M = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.H = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
-		LEDreg.HH = 1;
-		serializeLEDRegister(&LEDreg);
-		displayLEDBuffer(&LEDreg);
-		clearLEDRegister(&LEDreg);
-		HAL_Delay(100);
+		processPFLAE("$PFLAE,A,0,12,Supa message*50", &errorReg);
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
@@ -434,6 +278,12 @@ void displayClockPulse() {
 void displayLatch() {
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_SET);
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_RESET);
+}
+
+void displayErrors() {
+	if (FIRMWAREEXPIRED) {
+
+	}
 }
 
 /* USER CODE END 4 */
