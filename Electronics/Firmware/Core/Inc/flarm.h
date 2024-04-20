@@ -8,6 +8,8 @@
 #include "stdint.h"
 
 #define LED_BUFFER_SIZE 32
+#define PARAM_SIZE 52
+#define PFLAE_PARAMS 6
 
 enum errors {
 	FIRMWAREEXPIRED = 0x11,
@@ -111,3 +113,4 @@ void serializeLEDRegister(struct LEDRegister *reg);
 void clearLEDRegister(struct LEDRegister *reg);
 void processPFLAU(char *msg, struct aircraftRegister *reg);
 void processPFLAE(char *packet, struct errorRegister *reg);
+void decodePacket(char *packet, char params[][PARAM_SIZE]);

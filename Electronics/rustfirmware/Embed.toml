@@ -1,0 +1,6 @@
+[default.general]
+chip = "STM32F334K8Ux"
+
+# Enable if using a JLink
+[default.rtt]
+enabled = true

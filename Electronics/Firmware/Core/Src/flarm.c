@@ -21,11 +21,11 @@ void serializeLEDRegister(struct LEDRegister *reg) {
 	reg->Buffer |= reg->R05 << 24;
 	reg->Buffer |= reg->Y04 << 23;
 	reg->Buffer |= reg->R04 << 22;
-	reg->Buffer |= reg->LL 	<< 21;
-	reg->Buffer |= reg->L 	<< 20;
-	reg->Buffer |= reg->M 	<< 19;
-	reg->Buffer |= reg->H 	<< 18;
-	reg->Buffer |= reg->HH 	<< 17;
+	reg->Buffer |= reg->LL << 21;
+	reg->Buffer |= reg->L << 20;
+	reg->Buffer |= reg->M << 19;
+	reg->Buffer |= reg->H << 18;
+	reg->Buffer |= reg->HH << 17;
 	reg->Buffer |= reg->Y03 << 16;
 	reg->Buffer |= reg->R03 << 15;
 	reg->Buffer |= reg->Y02 << 14;
@@ -40,8 +40,8 @@ void serializeLEDRegister(struct LEDRegister *reg) {
 	reg->Buffer |= reg->R10 << 5;
 	reg->Buffer |= reg->Y09 << 4;
 	reg->Buffer |= reg->R09 << 3;
-	reg->Buffer |= reg->TX 	<< 2;
-	reg->Buffer |= reg->RX 	<< 1;
+	reg->Buffer |= reg->TX << 2;
+	reg->Buffer |= reg->RX << 1;
 	reg->Buffer |= reg->GPS << 0;
 }
 
@@ -49,25 +49,35 @@ void clearLEDRegister(struct LEDRegister *reg) {
 	memset(reg, 0, sizeof(*reg));
 }
 
-void processPFLAU(char *msg, struct aircraftRegister *reg) {
+//void processPFLAU(char *msg, struct aircraftRegister *reg) {
+//
+//}
 
+void decodePacket(char *packet, char params[][PARAM_SIZE]) {
+	char param[PARAM_SIZE];
+	uint8_t idx = 0;
+	uint8_t paramIdx = 0;
+
+	for (int i = 0; i < strlen(packet); i++) {
+		if (packet[i] == ',' || packet[i] == '\n' || packet[i] == '*') {
+			param[idx] = '\0';
+//			params[paramIdx] = param;
+			memcpy(params[paramIdx], param, sizeof(param));
+			memset(param, '\0', sizeof(param));
+			paramIdx++;
+			idx = 0;
+			continue;
+		}
+		param[idx] = packet[i];
+		idx++;
+	}
 }
 
 // PFLAE Error message format:
 // PFLAE,<QueryType>,<Severity>,<ErrorCode>[,<Message>]
 void processPFLAE(char *packet, struct errorRegister *reg) {
-	uint8_t tokenCount = 0;
-	char *token = strtok(packet, ",");
-	while (1) {
-		switch (tokenCount) {
-			case 2:
-				reg->severity = (uint8_t)atoi(token);
-				break;
-			case 3:
-				reg->errorCode = (uint16_t)strtol(token, NULL, 16);
-				break;
-		}
-		token = strtok(packet, ",");
-		tokenCount++;
-	}
+	char params[PFLAE_PARAMS][PARAM_SIZE];
+	decodePacket(packet, params);
+	reg->severity = (uint8_t)strtol(params[2], NULL, 10);
+	reg->errorCode = (uint16_t)strtol(params[3], NULL, 16);
 }

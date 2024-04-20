@@ -1,4 +1,4 @@
 ../Core/Src/flarm.c:12:6:serializeLEDRegister	16	static
 ../Core/Src/flarm.c:48:6:clearLEDRegister	16	static
-../Core/Src/flarm.c:52:6:processPFLAU	16	static
-../Core/Src/flarm.c:58:6:processPFLAE	24	static
+../Core/Src/flarm.c:56:6:decodePacket	96	static
+../Core/Src/flarm.c:78:6:processPFLAE	328	static
